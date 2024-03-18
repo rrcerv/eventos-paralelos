@@ -1,0 +1,1069 @@
+<html lang="pt-br"
+    class="wf-poppins-n3-active wf-poppins-n4-active wf-poppins-n5-active wf-poppins-n6-active wf-poppins-n7-active wf-active">
+<!-- begin::Head -->
+
+<head>
+    {% csrf_token %}
+    <!--begin::Base Path (base relative path for assets of this page) -->
+    <base href="../">
+    <!--end::Base Path -->
+    <meta charset="utf-8">
+    <title>Aprovação - {{ evento.nome }} </title>
+    <meta name="description" content="MyRio2C Admin">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!--begin::Fonts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" media="all">
+    <script>
+        WebFont.load({
+            google: {
+                "families": ["Poppins:300,400,500,600,700"]
+            },
+            active: function () {
+                sessionStorage.fonts = true;
+            }
+        });
+    </script>
+    <!--end::Fonts -->
+    <!--begin:: Global Mandatory Vendors -->
+    <link
+        href="https://myadmin.rio2c.com/bundles/css/layoutGlobalMandatoryVendors.css?v=PGN4C09hmnPsNOxd5YB_qne8t_dzJmXcyEMoZFiyfI01"
+        rel="stylesheet">
+
+    <!--end:: Global Mandatory Vendors -->
+    <!--begin:: Global Optional Vendors -->
+    <link
+        href="https://myadmin.rio2c.com/bundles/css/layoutGlobalOptionalVendors.css?v=o_SaICeEW8rR_GxC77shiDNINr2_a_75Jt1IXhbZ9Hk1"
+        rel="stylesheet">
+
+    <link
+        href="https://myadmin.rio2c.com/bundles/css/layoutFontOptionalVendors.css?v=ESlsNpuUtG0H_gWs7bFa4wwgZscDQnTDNs5tN0a9ZBk1"
+        rel="stylesheet">
+
+    <!--end:: Global Optional Vendors -->
+    <!--begin::Global Customized Styles -->
+    <link
+        href="https://myadmin.rio2c.com/bundles/css/layoutGlobalCustomizedStyles.css?v=uxv80F6GWGYGPYgH3CPT-VoBuDtOOPm3snz0Ibaqy3E1"
+        rel="stylesheet">
+
+    <!--end::Global Customized Styles -->
+    <!--begin::Page Styles -->
+
+    <link href="https://myadmin.rio2c.com/bundles/css/odometer.css?v=qut4H3YgfEPBvyv3Ucd3VNnRGz-hTJ518BNGdTGmCBo1"
+        rel="stylesheet">
+
+
+    <link rel= "stylesheet" href= "https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css" >
+
+    <!--end::Page Styles -->
+    <!--begin::Global Theme Styles(used by all pages) -->
+    <link
+        href="https://myadmin.rio2c.com/bundles/css/layoutGlobalThemeStyles.css?v=kvcBFiPk4HuekG2ogRfArsQD1wHzuovYVYD8qPOumCo1"
+        rel="stylesheet">
+
+        <link href='https://cdn.datatables.net/2.0.1/css/dataTables.bootstrap4.css' rel="stylesheet">
+
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        
+    <!--end::Global Theme Styles -->
+    <link rel="shortcut icon" href="https://myadmin.rio2c.com/Assets/img/favicon.png">
+
+
+
+</head>
+<!-- end::Head -->
+<!-- begin::Body -->
+
+<body
+    style="background-image: url(&quot;https://myadmin.rio2c.com/Assets/img/header.png?20230731&quot;); background-position: center top;"
+    class="kt-page--loading-enabled kt-quick-panel--right kt-demo-panel--right kt-offcanvas-panel--right kt-header--fixed kt-header--minimize-menu kt-header-mobile--fixed kt-subheader--enabled kt-subheader--transparent">
+
+    <!-- begin:: Page -->
+    {% include 'header.html' %}
+                <div class="kt-body kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor kt-grid--stretch"
+                    id="kt_body">
+                    <div class="kt-content kt-content--fit-top  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor"
+                        id="kt_content">
+                        <!-- Error message -->
+                        <div id="error-message" style="position:fixed; right:15px; top:15px;"></div>
+                        <!-- Fim error message-->
+                        <!-- begin:: Subheader -->
+
+                        <div class="kt-subheader   kt-grid__item" id="kt_subheader">
+                            <div class="kt-container ">
+                                <div class="kt-subheader__main">
+                                    <h3 class="kt-subheader__title">Aprovação de Convidados</h3>
+                                    <div class="kt-subheader__breadcrumbs">
+                                        <a href="/pt-br/2024" class="kt-subheader__breadcrumbs-home"><span
+                                                class="kt-subheader__breadcrumbs-link pr-0">Participantes</span></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- end:: Subheader -->
+                        <!-- begin:: Content -->
+                        <div class="kt-container  kt-grid__item kt-grid__item--fluid">
+
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <!--begin:: Total Count Widget-->
+                                    <div id="PlayersTotalCountWidget"
+                                        class="kt-portlet kt-portlet--fit kt-portlet--head-noborder"
+                                        style="min-height: 230px;">
+                                        <div class="kt-portlet__body kt-portlet__body--fluid">
+                                            <div class="kt-widget20">
+                                                <div class="kt-widget20__content kt-portlet__space-x">
+                                                    <span id="total-participantes" class="kt-widget20__number kt-font-">{{ evento.empresa_responsavel }} - {{ evento.nome }}</span>
+                                                    <span class="kt-widget20__desc" style="padding-left:1px; font-size:14px; color:#343a40"><strong id="EventLocal">• {{ evento.local }}</strong></span>
+                                                    <span class="kt-widget20__desc" style="padding-left:1px; font-size:14px; color:#343a40"><strong id="EventDate">• {{ evento.data|date:"d/m/Y" }}</strong></span>
+                                                    <span class="kt-widget20__desc" style=" padding-left:1px; font-size:14px; color: #343a40"><strong id="EventTime">• {{ evento.horario|time:"H:i" }}</strong></span>
+                                                    <span class="kt-widget20__desc" style=" padding-left:1px; font-size:14px; color: #343a40"><strong id="EventTime">• Capacidade: {{ evento.capacidade }}</strong></span>
+                                                </div>
+                                                <div class="kt-widget20__chart" style="height:130px;">
+                                                    <div class="chartjs-size-monitor">
+                                                        <div class="chartjs-size-monitor-expand">
+                                                            <div class=""></div>
+                                                        </div>
+                                                        <div class="chartjs-size-monitor-shrink">
+                                                            <div class=""></div>
+                                                        </div>
+                                                    </div>
+                                                    <canvas id="PlayersTotalCountChart" width="1300" height="260"
+                                                        style="display: block; height: 130px; width: 650px;"
+                                                        class="chartjs-render-monitor"></canvas>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--end:: Total Count Widget-->
+                                </div>
+                                <div class="col-sm-6">
+                                    <!--begin:: Edition Count-->
+                                    <div id="PlayersEditionCountWidget"
+                                        class="kt-portlet kt-portlet--fit kt-portlet--head-noborder"
+                                        style="min-height: 230px; position: relative; zoom: 1;">
+                                        <div class="kt-portlet__body kt-portlet__body--fluid">
+                                            <div class="kt-widget20">
+                                                <div class="kt-widget20__content kt-portlet__space-x">
+                                                    <span id="participantes-selecionados" class="kt-widget20__number kt-font-danger">0</span>
+                                                    <span class="kt-widget20__desc">
+                                                        <a href=""> Participantes selecionados</a>
+                                                    </span>
+                                                </div>
+                                                <div class="kt-widget20__chart" style="height:130px;">
+                                                    <div class="chartjs-size-monitor">
+                                                        <div class="chartjs-size-monitor-expand">
+                                                            <div class=""></div>
+                                                        </div>
+                                                        <div class="chartjs-size-monitor-shrink">
+                                                            <div class=""></div>
+                                                        </div>
+                                                    </div>
+                                                    <canvas id="PlayersEditionCountChart" width="1300" height="260"
+                                                        style="display: block; height: 130px; width: 650px;"
+                                                        class="chartjs-render-monitor"></canvas>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--end:: Edition Count-->
+                                </div>
+                            </div>
+
+                            <!-- Begin: Widget de Eventos Paralelos -->
+
+                            <div id="AudiovisualPlayersDataTableWidget" class="kt-portlet kt-portlet--mobile">
+                                <div class="kt-portlet__head kt-portlet__head--lg">
+                                    <div class="kt-portlet__head-label">
+                                        <span class="kt-portlet__head-icon">
+                                            <i class="las la-calendar-check"></i>
+                                        </span>
+                                        <h3 class="kt-portlet__head-title">
+                                            Participantes
+                                        </h3>
+                                    </div>
+                                    <div class="kt-portlet__head-toolbar">
+                                        <div class="kt-portlet__head-wrapper">
+                                            
+                                            
+                                            <div class="kt-portlet__head-actions">
+                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalCriarConvidadoExtra">
+                                                    <i class="la la-plus"></i>
+                                                    Novo Convidado
+                                                </button>
+                                            </div> 
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="kt-portlet__body">
+                                    <!--begin: SearchForm-->
+                                    <div class="form-group row">
+
+                                        <div class="col-lg-6">
+
+                                            <label>Buscar:</label>
+                                            <input autocomplete="off" class="form-control" id="Search" name="Search"
+                                                placeholder="Nome" type="search"
+                                                value="" onkeyup="searchTablePreSelecao()">
+
+                                        </div>
+
+                                        <div class="col-lg-6">
+
+                                        <label>Categoria:</label>
+                                        <select name="mercados" class="form-control" id="mercados" onclick="searchTablePreSelecao()">
+                                              <option value="">Todos</option>
+                                              <option value="Audiovisual">Audiovisual</option>
+                                              <option value="Música">Música</option>
+                                              <option value="Startup">Startup</option>
+                                          </select>
+
+                                        </div>
+                                        
+                                        
+                                        <div style="padding-top:20px;" class="col-lg-2">
+                                            <button id="selectAll" value="selectAll" type="submit" class="submit btn btn-outline-primary">Selecionar Todos</button>
+                                        </div>
+
+                                        <div style="padding-top:20px;" class="col-lg-2">
+                                            <button id="deselectAll" value="deselectAll" type="submit" class="submit btn btn-outline-primary">Desselecionar Todos</button>
+                                        </div>
+
+                                    </div>
+                                    <!--end: SearchForm-->
+                                    <!--begin: Datatable -->
+                                        
+                                    <table id="data-table" class="table table table-hover table-bordered table-responsive-sm" style="width:100%">
+                                        <col>
+                                        <col style="width:50%">
+                                        <col>
+                                        <col>
+                                        <col>
+                                        <col>
+                                        <col>
+                                        <col>
+                                        <thead>
+                                            <tr>
+                                                <th></th>
+                                                <th style="text-align: center;">Nome</th>
+                                                <th style="text-align: center;">Email</th>
+                                                <th style="text-align: center;">Nome da Empresa</th>
+                                                <th style="text-align: center;">Cargo</th>
+                                                <th style="text-align: center;">VIP</th>
+                                                <th style="text-align: center;">Categoria</th>
+                                                <th style="text-align: center;" style="text-align: center;"></th>
+                                            </tr>
+                                        </thead>
+
+                                        <tbody>
+
+                                            {% for nao_selecionado in nao_selecionados %}
+                                                <tr style="background-color:#f2d5d8;">
+                                                    <td style="text-align: center; vertical-align: middle"><img style="max-height:70px; max-width: 70px;" src="{{nao_selecionado.2}}"></th>
+                                                    <td style="text-align: center; vertical-align: middle">{{nao_selecionado.0}}</td>
+                                                    <td style="text-align: center; vertical-align: middle">{{nao_selecionado.1}}</td>
+                                                    <td style="text-align: center; vertical-align: middle"><div style="max-height: 70px; overflow-y:auto;">{{nao_selecionado.4}}</div></td>
+                                                    <td style="text-align: center; vertical-align: middle">{{nao_selecionado.3}}</td>
+                                                    <td style="text-align: center; vertical-align: middle">Sim</td>
+                                                    <td style="text-align: center; vertical-align: middle">Não selecionado</td>
+                                                    <td style="text-align: center; vertical-align: middle"><input data-id="{{nao_selecionado.8}}" class="checkbox" type="checkbox" style="width: 17px; height: 17px; margin-top:25px;"> </td>
+                                                </tr>
+                                            {% endfor %}
+                                            
+                                            {% for participante_extra in participantes_extras %}
+                                            
+                                            <tr>
+                                                <td style="text-align: center; vertical-align: middle"><img style="max-height:70px; max-width: 70px;" src=""></th>
+                                                <td style="text-align: center; vertical-align: middle">{{participante_extra.nome}}</td>
+                                                <td style="text-align: center; vertical-align: middle">{{participante_extra.email}}</td>
+                                                <td style="text-align: center; vertical-align: middle"><div style="max-height: 70px; overflow-y:auto;">{{participante_extra.empresa}}</div></td>
+                                                <td style="text-align: center; vertical-align: middle">{{participante_extra.cargo}}</td>
+                                                <td style="text-align: center; vertical-align: middle">Sim</td>
+                                                <td style="text-align: center; vertical-align: middle">Convidado Patrocinador</td>
+                                                <td style="text-align: center; vertical-align: middle"><input type="hidden" data-id="0"> </td>
+                                            </tr>
+
+                                            {% endfor %}
+
+                                            {% for participante in participantes %}
+
+                                            <tr>
+                                                <td style="text-align: center; vertical-align: middle"><img style="max-height:70px; max-width: 70px;" src="{{participante.2}}"></th>
+                                                <td style="text-align: center; vertical-align: middle">{{participante.0}}</td>
+                                                <td style="text-align: center; vertical-align: middle">{{participante.1}}</td>
+                                                <td style="text-align: center; vertical-align: middle"><div style="max-height: 100px; overflow-y:auto;">{{participante.4}}</div></td>
+                                                <td style="text-align: center; vertical-align: middle">{{participante.3}}</td>
+                                                <td style="text-align: center; vertical-align: middle">Sim</td>
+                                                <td style="text-align: center; vertical-align: middle">{{ participante.7 }}</td>
+                                                <td style="text-align: center; vertical-align: middle"> <input type="hidden" data-id="0"></td>
+                                            </tr>
+
+                                            {% endfor %}
+
+                                        </tbody>
+
+
+                                    </table>
+
+                                    <!-- end: Datatable-->
+                                    <button id="sendListPreSelected" class="btn btn-primary" style="width:10%; margin-left:90%;">Salvar</button>
+                                </div>
+            
+                            </div>
+
+                            <!-- End: Widget de Eventos Paralelos -->
+
+
+                        </div>
+                        <!-- end:: Content -->
+                    </div>
+                </div>
+                <!-- begin:: Footer -->
+                <div class="kt-footer  kt-footer--extended  kt-grid__item" id="kt_footer">
+
+                    <!--begin::Footer Bottom-->
+                    <div class="kt-footer__bottom">
+                        <div class="kt-container ">
+                            <div class="kt-footer__wrapper">
+                                <div class="kt-footer__logo">
+                                    <a class="kt-header__brand-logo" href="/pt-br/2024">
+                                        <img alt="Logo" src="https://myadmin.rio2c.com/Assets/img/logo_rio2c_white.png"
+                                            class="kt-header__brand-logo-sticky">
+                                    </a>
+                                    <div class="kt-footer__copyright">
+                                        © 2024 Rio2C | Front end: <a href="https://sof.to" target="_blank"
+                                            class="r2c-footer-link">Softo</a> | Back end: <a
+                                            href="https://www.addmind.me/" target="_blank"
+                                            class="r2c-footer-link">AddMind </a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!--end::Footer Bottom-->
+                </div>
+                <!-- end:: Footer -->
+            </div>
+        </div>
+    </div>
+    <!-- end:: Page -->
+    <!-- begin::Quick Panel -->
+   
+    <!-- end::Quick Panel -->
+    <!-- begin::Scrolltop -->
+    <div id="kt_scrolltop" class="kt-scrolltop">
+        <i class="fa fa-arrow-up"></i>
+    </div>
+    <!-- end::Scrolltop -->
+
+     <!-- MODAL Criar Convidado -->
+    
+     <div class="modal fade" id="modalCriarConvidadoExtra" tabindex="-1" role="dialog" aria-labelledby="modalCriarEventoTitulo" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="modalCriarEventoTitulo">Criar Novo Evento</h5>
+              
+              <button type="button" style="border-width: 0px; background-color: transparent;" data-dismiss="modal" aria-label="Close">
+                <i style="font-size:20px" class="las la-times-circle"></i>
+              </button>
+
+
+            </div>
+            <div class="modal-body">
+
+              <form id="CreateExtraGuest">
+                <div id="form-container">
+
+                    <label class="control-label" for="GuestName">Nome</label>
+                    <input class="form-control maxlength-enabled" data-val="true" 
+                    data-val-length="O campo Nome deve ter entre '1' e '100' caracteres." 
+                    data-val-length-max="100" data-val-length-min="1" id="GuestName" name="GuestName" type="text" value="">
+                    <div id="GuestNameError"></div>
+
+                    <br>
+
+                    <label class="control-label" for="GuestEmail">Email</label><br>
+                    <input type="email" class="form-control" id="GuestEmail" name="GuestEmail">
+                    <div id="GuestEmailError"></div>
+
+                    <br><br>
+                    <label class="control-label" for="GuestCompany">Empresa (opcional)</label>
+                    <input class="form-control maxlength-enabled" id="GuestCompany" name="GuestCompany" type="text" value="">
+                    <div id="GuestCompanyError"></div>
+
+                    <br><br>
+                    <label class="control-label" for="GuestJobTitle">Cargo (opcional)</label>
+                    <input class="form-control maxlength-enabled" id="GuestJobTitle" name="GuestJobTitle" type="text" value="">
+                    <div id="GuestJobTitleError"></div>
+
+                    
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                        <button value="Submit" type="submit" class="submit btn btn-primary">Salvar</button>
+                      </div>
+
+
+                </div>
+                </form> 
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <!-- Fim MODAL -->
+
+    <script
+        src="https://myadmin.rio2c.com/bundles/js/layoutGlobalMandatoryVendors.js?v=2U6VV-vPOSAek72Ngf0KGX3Yuqvnj2ctXm50SA_U-Is1"></script>
+
+    <!--end:: Global Mandatory Vendors -->
+    <!--begin:: Global Optional Vendors -->
+    <script
+        src="https://myadmin.rio2c.com/bundles/js/layoutGlobalOptionalVendors.js?v=i_xDqq-_Ha6A0feawWT2P5L1h4zzq_ky6SbPu0xmz7M1"></script>
+
+    <!-- begin::Global Config(global config for global JS sciprts) -->
+    <script>
+        var KTAppOptions = {
+            "colors": {
+                "state": {
+                    "brand": "#366cf3",
+                    "light": "#ffffff",
+                    "dark": "#282a3c",
+                    "primary": "#5867dd",
+                    "success": "#34bfa3",
+                    "info": "#36a3f7",
+                    "warning": "#ffb822",
+                    "danger": "#fd3995"
+                },
+                "base": {
+                    "label": ["#c5cbe3", "#a1a8c3", "#3d4465", "#3e4466"],
+                    "shape": ["#f0f3ff", "#d9dffa", "#afb4d4", "#646c9a"]
+                }
+            }
+        };
+    </script>
+
+    <!--end:: Global Optional Vendors -->
+
+    <!--begin: MyRio2C Scripts-->
+    <script>
+        // Show alert translations --------------------------------------------
+        var alertMessageTypeTranslated = {};
+        alertMessageTypeTranslated['success'] = 'Sucesso';
+        alertMessageTypeTranslated['info'] = 'Info';
+        alertMessageTypeTranslated['error'] = 'Erro';
+        alertMessageTypeTranslated['warning'] = 'ATEN&#199;&#195;O!';
+        var alertUndefinedMessage = 'Mensagem indefinida.';
+        var redirectMessage = 'Voc&#234; ser&#225; redirecionado...';
+
+        // Global javascript translations -------------------------------------
+        var labels = {
+            selectPlaceholder: 'Selecione...',
+            actions: 'A&#231;&#245;es',
+            edit: 'Editar',
+            view: 'Visualizar',
+            remove: 'Remover',
+            send: 'Enviar',
+            cancel: 'Cancelar',
+            confirm: 'Confirmar',
+            deleteConfirmationMessage: 'Por favor, confirme para excluir.',
+            deleteCurrentEditionConfirmationMessage: 'Por favor, confirme para excluir da edi&#231;&#227;o 2024.',
+            notInEdition: 'Fora da edi&#231;&#227;o 2024',
+            selectAtLeastOneOption: 'Selecione pelo menos uma op&#231;&#227;o do grupo.',
+            propertyBetweenLengths: 'O campo {0} deve ter entre &#39;{2}&#39; e &#39;{1}&#39; caracteres.',
+            maxlengthCounterMessage: 'Contagem de caracteres: %charsTyped%/%charsTotal%',
+            selectAll: 'Selecionar todos',
+            unselectAll: 'Deselecionar todos',
+            block: 'Bloquear',
+            unblock: 'Desbloquear',
+            blocked: 'Bloqueado',
+            blockConfirmationMessage: 'Por favor, confirme para bloquear.',
+            unblockConfirmationMessage: 'Por favor, confirme para desbloquear.',
+        };
+
+        // MyRio2CCommon script -----------------------------------------------
+        MyRio2cCommon.init('pt-br', '2024', 'assets.my.rio2c.com');
+
+
+    </script>
+
+    <!--end: MyRio2C Scripts-->
+    <!--begin::Page Scripts -->
+    <script type="text/javascript">
+        CKEDITOR_BASEPATH = "/Scripts/ckeditor/";
+    </script>
+
+
+
+    <script src="https://myadmin.rio2c.com/bundles/js/chart.js?v=HIEQAIiNzBCTddJLL3u_7skA3rK4968TOwtfvG1xtW01"></script>
+
+
+
+    <script>
+        //Enable Globalize with current culture
+        Globalize.culture('pt-BR');
+
+        //Enable Moment with current culture
+        moment.locale('pt-BR');
+    </script>
+
+    <!-- Script Charts -->
+   
+    <script>
+
+        const ctx = document.getElementById('PlayersTotalCountChart');
+
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['', '', '', '', '', ''],
+                datasets: [{
+                    label: ['', '', '', '', '', ''],
+                    data: [80, 45, 76, 35, 95, 100],
+                    borderWidth: 3,
+                    backgroundColor: 'rgba(168, 104, 50, 0.1)',
+                    borderColor: 'rgba(168, 104, 50, 0.5)',
+                    fill: true,
+                    tension: 0.1
+                }]
+            },
+            options: {
+                scales: {
+                    xAxes: [{
+                        display: false // Hide x-axis
+                    }],
+                    yAxes: [{
+                        ticks: {
+                            min: 0, // Minimum y-axis value
+                            max: 100, // Maximum y-axis value
+                            stepSize: 1 // Optional: Set step size for ticks
+                        },
+                        display: false // Hide y-axis
+                    }]
+                },
+                legend: {
+                    display: false // Hide legend
+                },
+                grid: {
+                    display: false // Hide grid lines
+                },
+                elements: {
+                    line: {
+                        borderWidth: 2 // Adjust line width as needed
+                    },
+                    point: {
+                        radius: 0 // Hide data points
+                    }
+                }
+            }
+        });
+
+
+      </script>
+
+
+    <script>
+
+    const ctx2 = document.getElementById('PlayersEditionCountChart');
+
+    new Chart(ctx2, {
+        type: 'line',
+        data: {
+            labels: ['', '', '', '', '', '', '', '', ''],
+            datasets: [{
+                label: ['', '', '', '', '', ''],
+                data: [90, 25, 76, 25, 95, 100, 30, 78, 65],
+                borderWidth: 3,
+                fill: true,
+                backgroundColor: 'rgba(75, 192, 192, 0.1)',
+                borderColor: 'rgba(75, 192, 192, 0.5)',
+                tension: 0.1,
+            }]
+        },
+        options: {
+            scales: {
+                xAxes: [{
+                    display: false // Hide x-axis
+                }],
+                yAxes: [{
+                    ticks: {
+                        min: 0, // Minimum y-axis value
+                        max: 100, // Maximum y-axis value
+                        stepSize: 1 // Optional: Set step size for ticks
+                    },
+                    display: false // Hide y-axis
+                }]
+            },
+            legend: {
+                display: false // Hide legend
+            },
+            grid: {
+                display: false // Hide grid lines
+            },
+            elements: {
+                line: {
+                    borderWidth: 2 // Adjust line width as needed
+                },
+                point: {
+                    radius: 0 // Hide data points
+                }
+            }
+        }
+    });
+
+
+    </script>
+
+    <!-- Fim Scripts Charts -->
+
+
+<!-- Script para links -->
+<script>
+    var homeURL = "{% url 'index' %}";
+    var apiPostConvidado = "{% url 'post_convidado_aprovacao' %}"
+    var apiPostSelecaoPatrocinador = "{% url 'api_post_selecaopatrocionador' %}"
+    var apiPostConvidadoExtra = "{% url 'api_post_convidado_extra_aprovacao' %}"
+    var nrConvidados = "{{ nr_participantes }}"
+    var populateTableAprovacao = "{% url 'api_populatetableaprovacao' id=evento.id %}"
+</script>
+<!-- Fim Script para links -->
+
+<script>
+    function getLastArgument(){
+        let url = window.location.href;
+        let parts = url.split('/');
+        let value = parts[parts.length-1]
+        return value;
+    }
+
+    function getCookie(name){
+      var cookieValue = null
+      if (document.cookie && document.cookie != ''){
+          var cookies = document.cookie.split(';')
+
+      for(var i=0; i < cookies.length; i++){
+          var cookie = cookies[i].trim()
+
+          if (cookie.substring(0, name.length + 1) === (name + '=')){
+              cookieValue = decodeURIComponent(cookie.substring(name.length + 1))
+
+              break 
+          }
+      }
+  }
+
+  return cookieValue
+}
+
+    function displayFadingMessage(message, id) {
+    
+    let errorMessage = document.getElementById(id);
+    
+    // Cria um elemento dentro da div de erro que captamos pelo ID como argumento na função
+    var element = document.createElement('div');
+    //console.log(element.childNodes.length);
+
+    if(errorMessage.childNodes.length == 0){
+    errorMessage.appendChild(element);
+
+    // Coloca o texto na div
+    element.textContent = message;
+
+    // Aplicando o CSS na div que criamos
+    element.style.borderRadius = '20px';
+    element.style.width = '250px';
+    element.style.border = '1px solid';
+    //element.style.margin = '10px 0px';
+    element.style.borderWidth = '2px';
+    element.style.fontWeight = 'bold';
+    element.style.padding = '15px 10px 15px 15px';
+    element.style.backgroundRepeat = 'no-repeat';
+    element.style.backgroundPosition = '10px center';
+    element.style.color = '#D8000C';
+    element.style.backgroundColor = '#FFBABA'
+    element.style.textAlign = 'center';
+    element.style.transition = 'opacity 0.5s'; // Fade effect duration
+
+    
+
+    // Fade
+    setTimeout(function() {
+        element.style.opacity = '0';
+    }, 3000);
+
+    // Deleta a div filha depois que ela já está totalmente faded
+    setTimeout(function() {
+        element.remove();
+    }, 3500);
+    };
+    }
+
+    function displayFadingMessageForm(message, id) {
+    
+    let errorMessage = document.getElementById(id);
+    
+    // Cria um elemento dentro da div de erro que captamos pelo ID como argumento na função
+    var element = document.createElement('div');
+    //console.log(element.childNodes.length);
+
+    if(errorMessage.childNodes.length == 0){
+    errorMessage.appendChild(element);
+
+    // Coloca o texto na div
+    element.textContent = message;
+
+    // Aplicando o CSS na div que criamos
+    element.style.color = 'red'; // Text color
+    element.style.transition = 'opacity 0.5s'; // Fade effect duration
+
+    // Fade
+    setTimeout(function() {
+        element.style.opacity = '0';
+    }, 3000);
+
+    // Deleta a div filha depois que ela já está totalmente faded
+    setTimeout(function() {
+        element.remove();
+    }, 3500);
+    };
+    }
+
+    function populateTable() {
+        table = document.getElementById("data-table");
+        tr = table.getElementsByTagName("tr");
+
+        for (i = 1; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[7];
+            input = td.querySelector('input')
+            uid = parseInt(input.getAttribute("data-id"));
+            console.log(uid, i );
+            if (arrayDraft.includes(uid)) {
+              input.checked = true;
+            } else{
+                console.log('nope');
+            }
+
+      }
+
+    }
+
+    function searchTablePreSelecao() {
+      // Declare variables
+      var input, filter, table, tr, td, i, txtValue;
+      let mercados = document.getElementById('mercados')
+      input = document.getElementById("Search");
+      input2 = document.getElementById("mercados");
+      filter = input.value.toUpperCase();
+      filter2 = input2.value.toUpperCase();
+      table = document.getElementById("data-table");
+      tr = table.getElementsByTagName("tr");
+    
+      // Loop through all table rows, and hide those who don't match the search query
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[1];
+        td2 = tr[i].getElementsByTagName("td")[6];
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+          txtValue2 = td2.textContent || td2.innerText;
+          if ( (txtValue.toUpperCase().indexOf(filter) > -1) && (txtValue2.toUpperCase().indexOf(filter2) > -1) ) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }
+      }
+    }
+
+    function validateEmail(email) {
+    var re = /^\S+@\S+\.\S+$/;
+    return re.test(email);
+    }
+
+    function getFormDataJson(){
+        GuestName = document.getElementById('GuestName').value 
+        GuestEmail = document.getElementById('GuestEmail').value
+        GuestCompany = document.getElementById('GuestCompany').value
+        GuestJobTitle = document.getElementById('GuestJobTitle').value
+
+        jsonObject = {
+            'guestName': GuestName,
+            'guestEmail': GuestEmail,
+            'guestCompany': GuestCompany,
+            'guestJobTitle': GuestJobTitle,
+            'eventoId': getLastArgument()
+        }
+
+        return jsonObject
+    }
+
+    var arrayDraft = []
+
+
+    /* API para fazer o post do convidado extra */
+    let formExtraGuest = document.getElementById('CreateExtraGuest')
+
+    formExtraGuest.addEventListener("submit", function(event){
+        console.log('enviado');
+        GuestName = document.getElementById('GuestName') 
+        GuestEmail = document.getElementById('GuestEmail')
+        GuestCompany = document.getElementById('GuestCompany')
+        GuestJobTitle = document.getElementById('GuestJobTitle')
+        let exception = false;
+
+        // VALIDAÇÕES
+
+        if (GuestName.value.length > 255 || GuestName.value.length == 0 ){
+            displayFadingMessageForm('O nome do convidado deve ter entre 1 e 255 caracteres', 'GuestNameError')
+            exception = true;
+
+            GuestName.style.borderColor = "#FF0F0F";
+            GuestName.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        } else if (GuestName.style.borderColor == "rgb(255, 15, 15)") {
+            GuestName.style.borderColor = "#212529";
+        }
+
+
+        if ( !validateEmail(GuestEmail.value) && exception == false ){
+            displayFadingMessageForm('Parece haver alguma inconsistência no email do convidado', 'GuestEmailError')
+            exception = true;
+
+            GuestEmail.style.borderColor = "#FF0F0F";
+            GuestEmail.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        } else if (GuestEmail.style.borderColor == "rgb(255, 15, 15)") {
+            GuestEmail.style.borderColor = "#212529";
+        }
+
+        if ( (GuestCompany.length > 255) && exception == false ){
+            displayFadingMessageForm('O nome da empresa deve ter entre 1 e 255 caracteres', 'GuestCompanyError')
+            exception = true;
+
+            GuestCompany.style.borderColor = "#FF0F0F";
+            GuestCompany.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        } else if (GuestCompany.style.borderColor == "rgb(255, 15, 15)") {
+            GuestCompany.style.borderColor = "#212529";
+        }
+
+        if ( (GuestJobTitle.length > 255) && exception == false ){
+            displayFadingMessageForm('O nome do cargo deve ter entre 1 e 255 caracteres', 'GuestJobTitleError')
+            exception = true;
+
+            GuestJobTitle.style.borderColor = "#FF0F0F";
+            GuestJobTitle.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        } else if (GuestJobTitle.style.borderColor == "rgb(255, 15, 15)") {
+            GuestJobTitle.style.borderColor = "#212529";
+        }
+        
+        // FIM VALIDAÇÕES
+
+        if (exception == true){
+            event.preventDefault();
+            exception = false;
+        } else{
+            event.preventDefault();
+            let guestFormData = getFormDataJson();
+
+            fetch(`${apiPostConvidadoExtra}`, {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken':getCookie('csrftoken')
+              },
+              body: JSON.stringify(guestFormData)
+            })
+            .then(response => {
+              location.reload();
+            })
+            .catch(error => {
+              console.log(error);
+            })
+
+        }
+
+    })
+
+    /* 
+    Ao realizar o content load do DOM, populamos a tabela com os registros do banco de dados
+    e adicionamos os event listeners nos checkbox.
+    */
+    document.addEventListener("DOMContentLoaded", function() {
+        const numeroSelecionados = document.getElementById('participantes-selecionados');
+
+        let idEvento = getLastArgument();
+        fetch(`/api/populateTableAprovacao/${idEvento}`)
+            .then(response => {
+              if (!response.ok) {
+                throw new Error('Network response was not ok');
+              }
+              return response.json();
+            })
+            .then(data => {
+              // Process the JSON data
+              arrayDraft = data['response'];
+              numeroSelecionados.innerHTML = arrayDraft.length + parseInt(nrConvidados);
+              populateTable();
+
+            })
+            .catch(error => {
+              console.error('There was a problem with the fetch operation:', error);
+            })
+
+     // Adicionar Event Listener as modificações na tabela refletirem no banco de dados
+      document.getElementById("data-table").addEventListener("change", function(event) {
+        var target = event.target;
+
+        if (target && target.classList.contains("checkbox")) {
+          var id = parseInt(target.getAttribute("data-id"));
+          
+          if (target.checked) {
+
+            // Adicionar ao array se o checkbox for marcado
+            if (!arrayDraft.includes(id)) {
+
+                jsonObject = {
+                Uuid: id,
+                idEvento: getLastArgument(),
+                funcao: 'add'
+                }
+
+                arrayDraft.push(id);
+                fetch(`${apiPostConvidado}`, {
+                method: 'POST',
+                headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': getCookie('csrftoken')
+                  },
+                  body: JSON.stringify(jsonObject)
+                })
+                .then(response => {
+
+                })
+                .catch(error => {
+                  // Handle error
+                });
+
+            }
+
+          } else {
+            // Remover do array se o checkbox for desmarcado
+            var index = arrayDraft.indexOf(id);
+            if (index !== -1) {
+
+              arrayDraft.splice(index, 1);
+              
+              jsonObject = {
+                Uuid: id,
+                idEvento: getLastArgument(),
+                funcao: 'rem'
+                }
+
+              fetch(`${apiPostConvidado}`, {
+                method: 'POST',
+                headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': getCookie('csrftoken')
+                  },
+                  body: JSON.stringify(jsonObject)
+                })
+                .then(response => {
+                    
+                })
+                .catch(error => {
+                  // Handle error
+                });
+
+            }
+          }
+          
+          const numeroSelecionados = document.getElementById('participantes-selecionados');
+
+          numeroSelecionados.innerHTML = arrayDraft.length + parseInt(nrConvidados);
+
+          // Debug
+          //console.log(arrayDraft);
+          //console.log(arrayDraft.length);
+        }
+      });
+    });
+
+
+    // Lógica de envio do formulário.
+    sendButton = document.getElementById('sendListPreSelected')
+
+    sendButton.addEventListener('click', function(){
+            var idEvento = (getLastArgument());
+
+            var jsonObject = {
+                idEvento: idEvento,
+                arrayConvidados: arrayDraft
+            }
+
+            fetch(`/api/post_aprovacao/${idEvento}`, {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': getCookie('csrftoken')
+              },
+              body: JSON.stringify(jsonObject)
+            })
+            .then(response => {
+              window.location.replace(homeURL)
+            })
+            .catch(error => {
+              // Handle error
+            });
+
+        })
+            
+    
+    selectAllButton = document.getElementById('selectAll')
+
+    selectAllButton.addEventListener('click', function(){
+        table = document.getElementById("data-table");
+        tr = table.getElementsByTagName("tr");
+
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[7];
+          if (td) {
+            if( tr[i].style.display == ''){
+                input = td.querySelector('input');
+                if (input.checked == false){
+                    input.click();
+                }
+            }
+          }
+        }  
+    })
+
+    deselectAllButton = document.getElementById('deselectAll')
+
+    deselectAllButton.addEventListener('click', function(){
+        table = document.getElementById("data-table");
+        tr = table.getElementsByTagName("tr");
+
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[7];
+          if (td) {
+            if( tr[i].style.display == ''){
+                input = td.querySelector('input');
+                if (input.checked == true){
+                    input.click();
+                }
+            }
+          }
+        }  
+    })
+
+    </script>
+
+
+    <!--end::Page Scripts -->
+    <!--begin: Global Modal Container-->
+    <div id="GlobalModalContainer"></div>
+    <!--end: Global Modal Container-->
+
+</body><!-- end::Body -->
+
+</html>

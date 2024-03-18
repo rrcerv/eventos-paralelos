@@ -1,0 +1,14 @@
+asgiref==3.7.2
+cffi==1.16.0
+cryptography==42.0.5
+Django==4.2.11
+django-appconf==1.0.6
+django-cryptography==1.1
+django-environ==0.11.2
+mysqlclient==2.2.4
+pycparser==2.21
+pycryptodome==3.20.0
+pyodbc==5.1.0
+sqlparse==0.4.4
+typing_extensions==4.10.0
+tzdata==2024.1

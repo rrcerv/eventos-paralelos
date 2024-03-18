@@ -1,0 +1,502 @@
+<html lang="pt-br"
+    class="wf-poppins-n3-active wf-poppins-n4-active wf-poppins-n5-active wf-poppins-n6-active wf-poppins-n7-active wf-active">
+<!-- begin::Head -->
+<!DOCTYPE html>
+<head>
+    {% load static %}
+    <!-- EVO Calendar-->
+    <link rel="stylesheet" type="text/css" href="{% static 'js\evo-calendar\evo-calendar\css\evo-calendar.min.css' %}"/>
+
+
+    <!-- CALENDAR JS--> <!--
+    <link rel="stylesheet" href="node_modules/jcalendar.js/dist/calendar.js.css">
+    <script src="node_modules/jcalendar.js/dist/calendar.js"></script>
+    -->
+
+
+    <!--begin::Base Path (base relative path for assets of this page) -->
+    <base href="../">
+    <!--end::Base Path -->
+    <meta charset="utf-8">
+    <title>MyRio2C Admin | Dashboard</title>
+    <meta name="description" content="MyRio2C Admin">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!--begin::Fonts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" media="all">
+    <script>
+        WebFont.load({
+            google: {
+                "families": ["Poppins:300,400,500,600,700"]
+            },
+            active: function () {
+                sessionStorage.fonts = true;
+            }
+        });
+    </script>
+    <!--end::Fonts -->
+    <!--begin:: Global Mandatory Vendors -->
+    <link
+        href="https://myadmin.rio2c.com/bundles/css/layoutGlobalMandatoryVendors.css?v=PGN4C09hmnPsNOxd5YB_qne8t_dzJmXcyEMoZFiyfI01"
+        rel="stylesheet">
+
+    <!--end:: Global Mandatory Vendors -->
+    <!--begin:: Global Optional Vendors -->
+    <link
+        href="https://myadmin.rio2c.com/bundles/css/layoutGlobalOptionalVendors.css?v=o_SaICeEW8rR_GxC77shiDNINr2_a_75Jt1IXhbZ9Hk1"
+        rel="stylesheet">
+
+    <link
+        href="https://myadmin.rio2c.com/bundles/css/layoutFontOptionalVendors.css?v=ESlsNpuUtG0H_gWs7bFa4wwgZscDQnTDNs5tN0a9ZBk1"
+        rel="stylesheet">
+
+    <!--end:: Global Optional Vendors -->
+    <!--begin::Global Customized Styles -->
+    <link
+        href="https://myadmin.rio2c.com/bundles/css/layoutGlobalCustomizedStyles.css?v=uxv80F6GWGYGPYgH3CPT-VoBuDtOOPm3snz0Ibaqy3E1"
+        rel="stylesheet">
+
+    <!--end::Global Customized Styles -->
+    <!--begin::Page Styles -->
+
+    <link href="https://myadmin.rio2c.com/bundles/css/odometer.css?v=qut4H3YgfEPBvyv3Ucd3VNnRGz-hTJ518BNGdTGmCBo1"
+        rel="stylesheet">
+
+
+    <link rel= "stylesheet" href= "https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css" >
+
+    <!--end::Page Styles -->
+    <!--begin::Global Theme Styles(used by all pages) -->
+    <link
+        href="https://myadmin.rio2c.com/bundles/css/layoutGlobalThemeStyles.css?v=kvcBFiPk4HuekG2ogRfArsQD1wHzuovYVYD8qPOumCo1"
+        rel="stylesheet">
+
+        <link href='https://cdn.datatables.net/2.0.1/css/dataTables.bootstrap4.css' rel="stylesheet">
+
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        
+    <!--end::Global Theme Styles -->
+    <link rel="shortcut icon" href="https://myadmin.rio2c.com/Assets/img/favicon.png">
+
+
+
+
+</head>
+<!-- end::Head -->
+<!-- begin::Body -->
+
+<body
+    style="background-image: url(&quot;https://myadmin.rio2c.com/Assets/img/header.png?20230731&quot;); background-position: center top;"
+    class="kt-page--loading-enabled kt-quick-panel--right kt-demo-panel--right kt-offcanvas-panel--right kt-header--fixed kt-header--minimize-menu kt-header-mobile--fixed kt-subheader--enabled kt-subheader--transparent">
+
+   {% include 'header.html' %}
+                <div class="kt-body kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor kt-grid--stretch"
+                    id="kt_body">
+                    <div class="kt-content kt-content--fit-top  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor"
+                        id="kt_content">
+                        <!-- begin:: Subheader -->
+
+                        <div class="kt-subheader   kt-grid__item" id="kt_subheader">
+                            <div class="kt-container ">
+                                <div class="kt-subheader__main">
+                                    <h3 class="kt-subheader__title">Agenda</h3>
+                                    <div class="kt-subheader__breadcrumbs">
+                                        <a href="/pt-br/2024" class="kt-subheader__breadcrumbs-home"><span
+                                                class="kt-subheader__breadcrumbs-link pr-0"><!-- subtitulo --> </span></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- end:: Subheader -->
+                        <!-- begin:: Content -->
+                        <div id="calendar" style="width:1280px"></div>
+                        <!-- end:: Content -->
+                    </div>
+                </div>
+                <!-- begin:: Footer -->
+                <div class="kt-footer  kt-footer--extended  kt-grid__item" id="kt_footer">
+
+                    <!--begin::Footer Bottom-->
+                    <div class="kt-footer__bottom">
+                        <div class="kt-container ">
+                            <div class="kt-footer__wrapper">
+                                <div class="kt-footer__logo">
+                                    <a class="kt-header__brand-logo" href="/pt-br/2024">
+                                        <img alt="Logo" src="https://myadmin.rio2c.com/Assets/img/logo_rio2c_white.png"
+                                            class="kt-header__brand-logo-sticky">
+                                    </a>
+                                    <div class="kt-footer__copyright">
+                                        © 2024 Rio2C | Front end: <a href="https://sof.to" target="_blank"
+                                            class="r2c-footer-link">Softo</a> | Back end: <a
+                                            href="https://www.addmind.me/" target="_blank"
+                                            class="r2c-footer-link">AddMind </a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!--end::Footer Bottom-->
+                </div>
+                <!-- end:: Footer -->
+            </div>
+        </div>
+    </div>
+    <!-- end:: Page -->
+    <!-- begin::Quick Panel -->
+   
+    <!-- end::Quick Panel -->
+    <!-- begin::Scrolltop -->
+    <div id="kt_scrolltop" class="kt-scrolltop">
+        <i class="fa fa-arrow-up"></i>
+    </div>
+    <!-- end::Scrolltop -->
+
+
+    <!-- MODAL Criar Evento -->
+    
+    <div class="modal fade" id="modalCriarEvento" tabindex="-1" role="dialog" aria-labelledby="modalCriarEventoTitulo" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="modalCriarEventoTitulo">Criar Novo Evento</h5>
+              
+              <button type="button" style="border-width: 0px; background-color: transparent;" data-dismiss="modal" aria-label="Close">
+                <i style="font-size:20px" class="las la-times-circle"></i>
+              </button>
+
+
+            </div>
+            <div class="modal-body">
+
+              <form>
+                <div id="form-container">
+
+                    <label class="control-label" for="EventName">Nome</label>
+                    <input class="form-control maxlength-enabled" data-val="true" 
+                    data-val-length="O campo Nome deve ter entre '1' e '100' caracteres." 
+                    data-val-length-max="100" data-val-length-min="1" id="EventName" name="EventName" type="text" value="">
+                    
+                    <br>
+
+                    <label class="control-label" for="EventLocation">Local</label>
+                    <input class="form-control maxlength-enabled" data-val="true" 
+                    data-val-length="O campo Local deve ter entre '1' e '100' caracteres." 
+                    data-val-length-max="100" data-val-length-min="1" id="EventLocation" name="EventLocation" type="text" value="">
+
+                    <br>
+
+                    <label class="control-label" for="EventDate">Data</label><br>
+                    <input type="date" id="EventDate" name="EventDate" min=2024-01-01>
+
+                    <br><br>
+
+                    <label class="control-label" for="EventTime">Horário</label> <br>
+                    <input type="time"id="EventTime">
+
+                    <br><br>
+
+                    <label class="control-label" for="EventCapacity">Capacidade</label> <br>
+                    <input type="number" id="EventCapacity" max="2000" min="0">
+
+                    <br><br>
+                    <label class="control-label" for="EventManager">Email do Responsável</label><br>
+                    <input type="email" class="form-control" id="EventManager">
+                    
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                        <button type="submit" class="btn btn-primary">Salvar</button>
+                      </div>
+
+
+                </div>
+                </form> 
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <!-- Fim MODAL -->
+
+      <!-- Scripts para links -->
+      <script>
+        var apiEventos = "{% url 'api_eventos' %}"
+      </script>
+      <!-- Fim Scripts para links-->
+
+    <script
+        src="https://myadmin.rio2c.com/bundles/js/layoutGlobalMandatoryVendors.js?v=2U6VV-vPOSAek72Ngf0KGX3Yuqvnj2ctXm50SA_U-Is1"></script>
+
+    <!--end:: Global Mandatory Vendors -->
+    <!--begin:: Global Optional Vendors -->
+    <script
+        src="https://myadmin.rio2c.com/bundles/js/layoutGlobalOptionalVendors.js?v=i_xDqq-_Ha6A0feawWT2P5L1h4zzq_ky6SbPu0xmz7M1"></script>
+
+    <!-- begin::Global Config(global config for global JS sciprts) -->
+    <script>
+        var KTAppOptions = {
+            "colors": {
+                "state": {
+                    "brand": "#366cf3",
+                    "light": "#ffffff",
+                    "dark": "#282a3c",
+                    "primary": "#5867dd",
+                    "success": "#34bfa3",
+                    "info": "#36a3f7",
+                    "warning": "#ffb822",
+                    "danger": "#fd3995"
+                },
+                "base": {
+                    "label": ["#c5cbe3", "#a1a8c3", "#3d4465", "#3e4466"],
+                    "shape": ["#f0f3ff", "#d9dffa", "#afb4d4", "#646c9a"]
+                }
+            }
+        };
+    </script>
+
+    <!--end:: Global Optional Vendors -->
+
+    <!--begin: MyRio2C Scripts-->
+    
+    <!-- Add jQuery library (required) -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+
+    <!-- Add the evo-calendar.js for.. obviously, functionality! -->
+    <script src="{% static 'js\evo-calendar\evo-calendar\js\evo-calendar.min.js' %}"></script>
+
+    {{ eventos|json_script:"json_data" }}
+
+    <script>
+
+        teste = JSON.parse(document.getElementById("json_data").textContent);
+        teste = JSON.parse(teste);
+
+        myEvents = []
+        
+        for (i=0; i<teste.length; i++){
+            newEvento = {
+                id: i+1,
+                name: (teste[i]['fields'].nome),
+                date: (teste[i]['fields'].data),
+                description: (teste[i]['fields'].horario.slice(0,-3)),
+                badge: (teste[i]['fields'].empresa_responsavel),
+                type: 'party'
+            }
+            
+            myEvents.push(newEvento);
+        }
+
+
+        console.log(myEvents)
+
+
+    </script>
+
+
+    <script>
+    $(document).ready(function() {
+        $('#calendar').evoCalendar({
+        calendarEvents: myEvents,
+        language: 'pt',
+        eventHeaderFormat:'d '+ ' - ' + 'MM '+'yyyy ',
+        todayHighlight: true,
+})
+    })
+    </script>
+
+
+    <!--
+    <script> 
+        var calendarInstance1 = new calendarJs( "calendar", {
+          manualEditingEnabled: true
+          // All your options can be set here
+        } );
+      
+        // OR
+        var calendarElement = document.getElementById( "calendar" );
+        var calendarInstance2 = new calendarJs( calendarElement, {
+          manualEditingEnabled: true
+          // All your options can be set here
+        } ); 
+      </script>
+    -->
+
+
+    <script>
+        // Show alert translations --------------------------------------------
+        var alertMessageTypeTranslated = {};
+        alertMessageTypeTranslated['success'] = 'Sucesso';
+        alertMessageTypeTranslated['info'] = 'Info';
+        alertMessageTypeTranslated['error'] = 'Erro';
+        alertMessageTypeTranslated['warning'] = 'ATEN&#199;&#195;O!';
+        var alertUndefinedMessage = 'Mensagem indefinida.';
+        var redirectMessage = 'Voc&#234; ser&#225; redirecionado...';
+
+        // Global javascript translations -------------------------------------
+        var labels = {
+            selectPlaceholder: 'Selecione...',
+            actions: 'A&#231;&#245;es',
+            edit: 'Editar',
+            view: 'Visualizar',
+            remove: 'Remover',
+            send: 'Enviar',
+            cancel: 'Cancelar',
+            confirm: 'Confirmar',
+            deleteConfirmationMessage: 'Por favor, confirme para excluir.',
+            deleteCurrentEditionConfirmationMessage: 'Por favor, confirme para excluir da edi&#231;&#227;o 2024.',
+            notInEdition: 'Fora da edi&#231;&#227;o 2024',
+            selectAtLeastOneOption: 'Selecione pelo menos uma op&#231;&#227;o do grupo.',
+            propertyBetweenLengths: 'O campo {0} deve ter entre &#39;{2}&#39; e &#39;{1}&#39; caracteres.',
+            maxlengthCounterMessage: 'Contagem de caracteres: %charsTyped%/%charsTotal%',
+            selectAll: 'Selecionar todos',
+            unselectAll: 'Deselecionar todos',
+            block: 'Bloquear',
+            unblock: 'Desbloquear',
+            blocked: 'Bloqueado',
+            blockConfirmationMessage: 'Por favor, confirme para bloquear.',
+            unblockConfirmationMessage: 'Por favor, confirme para desbloquear.',
+        };
+
+        // MyRio2CCommon script -----------------------------------------------
+        MyRio2cCommon.init('pt-br', '2024', 'assets.my.rio2c.com');
+
+
+    </script>
+    <!--end: MyRio2C Scripts-->
+    <!--begin::Page Scripts -->
+    <script type="text/javascript">
+        CKEDITOR_BASEPATH = "/Scripts/ckeditor/";
+    </script>
+
+
+
+    <script src="https://myadmin.rio2c.com/bundles/js/chart.js?v=HIEQAIiNzBCTddJLL3u_7skA3rK4968TOwtfvG1xtW01"></script>
+
+
+
+    <script>
+        //Enable Globalize with current culture
+        Globalize.culture('pt-BR');
+
+        //Enable Moment with current culture
+        moment.locale('pt-BR');
+    </script>
+
+    <!-- Script Charts -->
+   
+   <script>
+
+        const ctx = document.getElementById('PlayersTotalCountChart');
+
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['', '', '', '', '', ''],
+                datasets: [{
+                    label: ['', '', '', '', '', ''],
+                    data: [80, 45, 76, 35, 95, 100],
+                    borderWidth: 3,
+                    backgroundColor: 'rgba(168, 104, 50, 0.1)',
+                    borderColor: 'rgba(168, 104, 50, 0.5)',
+                    fill: true,
+                    tension: 0.1
+                }]
+            },
+            options: {
+                scales: {
+                    xAxes: [{
+                        display: false // Hide x-axis
+                    }],
+                    yAxes: [{
+                        ticks: {
+                            min: 0, // Minimum y-axis value
+                            max: 100, // Maximum y-axis value
+                            stepSize: 1 // Optional: Set step size for ticks
+                        },
+                        display: false // Hide y-axis
+                    }]
+                },
+                legend: {
+                    display: false // Hide legend
+                },
+                grid: {
+                    display: false // Hide grid lines
+                },
+                elements: {
+                    line: {
+                        borderWidth: 2 // Adjust line width as needed
+                    },
+                    point: {
+                        radius: 0 // Hide data points
+                    }
+                }
+            }
+        });
+
+
+      </script>
+
+<script>
+
+    const ctx2 = document.getElementById('PlayersEditionCountChart');
+
+    new Chart(ctx2, {
+        type: 'line',
+        data: {
+            labels: ['', '', '', '', '', '', '', '', ''],
+            datasets: [{
+                label: ['', '', '', '', '', ''],
+                data: [90, 25, 76, 25, 95, 100, 30, 78, 65],
+                borderWidth: 3,
+                fill: true,
+                backgroundColor: 'rgba(75, 192, 192, 0.1)',
+                borderColor: 'rgba(75, 192, 192, 0.5)',
+                tension: 0.1,
+            }]
+        },
+        options: {
+            scales: {
+                xAxes: [{
+                    display: false // Hide x-axis
+                }],
+                yAxes: [{
+                    ticks: {
+                        min: 0, // Minimum y-axis value
+                        max: 100, // Maximum y-axis value
+                        stepSize: 1 // Optional: Set step size for ticks
+                    },
+                    display: false // Hide y-axis
+                }]
+            },
+            legend: {
+                display: false // Hide legend
+            },
+            grid: {
+                display: false // Hide grid lines
+            },
+            elements: {
+                line: {
+                    borderWidth: 2 // Adjust line width as needed
+                },
+                point: {
+                    radius: 0 // Hide data points
+                }
+            }
+        }
+    });
+
+
+  </script>
+
+    <!--end::Page Scripts -->
+    <!--begin: Global Modal Container-->
+    <div id="GlobalModalContainer"></div>
+    <!--end: Global Modal Container-->
+
+
+
+</body><!-- end::Body -->
+
+</html>

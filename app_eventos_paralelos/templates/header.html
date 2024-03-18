@@ -1,0 +1,167 @@
+    <!-- begin:: Header Mobile -->
+    <div id="kt_header_mobile" class="kt-header-mobile  kt-header-mobile--fixed ">
+        <div class="kt-header-mobile__logo">
+            <a href="{% url 'index' %}">
+                <img alt="Logo" src="https://myadmin.rio2c.com/Assets/img/logo_rio2c_color.png"
+                    class="r2c-header-mobile__logo">
+            </a>
+        </div>
+        <div class="kt-header-mobile__toolbar">
+            <button class="kt-header-mobile__toolbar-toggler" id="kt_header_mobile_toggler"><span></span></button>
+            <button class="kt-header-mobile__toolbar-topbar-toggler" id="kt_header_mobile_topbar_toggler"><i
+                    class="flaticon-more-1"></i></button>
+        </div>
+    </div>
+    <!-- end:: Header Mobile -->
+    <div class="kt-grid kt-grid--hor kt-grid--root">
+        <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--ver kt-page">
+            <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor kt-wrapper" id="kt_wrapper">
+                <!-- begin:: Header -->
+
+                <div id="kt_header" class="kt-header  kt-header--fixed " data-ktheader-minimize="on">
+                    <div class="kt-container ">
+                        <!-- begin:: Brand -->
+                        <div class="kt-header__brand   kt-grid__item" id="kt_header_brand">
+                            <a class="kt-header__brand-logo" href="{% url 'index' %}">
+                                <img alt="Logo" src="https://myadmin.rio2c.com/Assets/img/logo_rio2c_white.png"
+                                    class="kt-header__brand-logo-default">
+                                <img alt="Logo" src="https://myadmin.rio2c.com/Assets/img/logo_rio2c_color.png"
+                                    class="kt-header__brand-logo-sticky">
+                            </a>
+                        </div>
+                        <!-- end:: Brand -->
+                        <!-- begin: Header Menu -->
+                        <button class="kt-header-menu-wrapper-close" id="kt_header_menu_mobile_close_btn"><i
+                                class="la la-close"></i></button>
+                        <div class="kt-header-menu-wrapper kt-grid__item kt-grid__item--fluid"
+                            id="kt_header_menu_wrapper" style="opacity: 1;">
+                            <div id="kt_header_menu" class="kt-header-menu kt-header-menu-mobile ">
+
+                                <ul class="kt-menu__nav">
+
+                                    <li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--rel"
+                                        data-ktmenu-submenu-toggle="click" aria-haspopup="true">
+                                        <a href="{% url 'index' %}" class="kt-menu__link kt-menu__toggle">
+
+                                            <span class="kt-menu__link-text">Eventos Paralelos</span><i
+                                                class="kt-menu__ver-arrow la la-angle-right"></i></a>
+
+                                    </li>
+
+                                    <li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--rel"
+                                        data-ktmenu-submenu-toggle="click" aria-haspopup="true">
+                                        <a href="{% url 'logistica' %}" class="kt-menu__link kt-menu__toggle">
+
+                                            <span class="kt-menu__link-text">Logística</span><i
+                                                class="kt-menu__ver-arrow la la-angle-right"></i></a>
+
+                                    </li>
+
+                                    <li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--rel  "
+                                        data-ktmenu-submenu-toggle="click" aria-haspopup="true">
+                                        <a href="{% url 'agenda' %}" class="kt-menu__link kt-menu__toggle"><span
+                                                class="kt-menu__link-text">Agenda</span><i
+                                                class="kt-menu__ver-arrow la la-angle-right"></i></a>
+                                    </li>
+                                </ul>
+
+                            </div>
+                        </div>
+                        <!-- end: Header Menu -->
+                        <!-- begin:: Header Topbar -->
+                        <div class="kt-header__topbar kt-grid__item">
+                            <!--begin: Browsing mode -->
+
+                            <!--begin: Browsing mode -->
+
+                            <!--end: Browsing mode -->
+                            <!--begin: Edition dropdown -->
+
+                            <div class="kt-header__topbar-item kt-header__topbar-item--langs" style="margin: 0;">
+                                <div class="kt-header__topbar-wrapper" data-offset="10px,0px">
+                                    <div class="kt-header__topbar-icon" style="width: auto; max-width: none;">
+                                        <div class="dropdown">
+                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--end: Edition dropdown -->
+                            <!--begin: Language bar -->
+
+                            <div class="kt-header__topbar-item kt-header__topbar-item--langs">
+                                <div class="kt-header__topbar-wrapper" data-toggle="dropdown" data-offset="10px,0px">
+                                </div>
+                                <div class="dropdown-menu dropdown-menu-fit dropdown-menu-right dropdown-menu-anim">
+                                    <ul class="kt-nav kt-margin-t-10 kt-margin-b-10">
+                                        <li class="kt-nav__item">
+
+                                            <a href="/pt-br/2024/Home/SetCulture?returnUrl=%2Fpt-br%2F2024"
+                                                class="kt-nav__link">
+                                                <span class="kt-nav__link-icon"><img
+                                                        src="https://myadmin.rio2c.com/Assets/themes/metronic/media/flags/011-brazil.svg"
+                                                        alt="Português (Brasil)"></span>
+                                                <span class="kt-nav__link-text">Português (Brasil)</span>
+                                            </a>
+                                        </li>
+                                        <li class="kt-nav__item">
+
+                                            <a href="/en-us/Home/SetCulture?returnUrl=%2Fpt-br%2F2024"
+                                                class="kt-nav__link">
+                                                <span class="kt-nav__link-icon"><img
+                                                        src="https://myadmin.rio2c.com/Assets/themes/metronic/media/flags/020-flag.svg"
+                                                        alt="English (United States)"></span>
+                                                <span class="kt-nav__link-text">English (United States)</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!--end: Language bar -->
+                            <!--begin: User bar -->
+                            <div class="kt-header__topbar-item kt-header__topbar-item--user">
+                                <div class="kt-header__topbar-wrapper" data-toggle="dropdown" data-offset="10px,0px">
+                                    <!--<span class="kt-header__topbar-welcome">Olá,</span>
+                                    <span class="kt-header__topbar-username">Admin</span> -->
+                                    <span class="kt-header__topbar-icon"><i class="las la-cog"></i></span>
+                                </div>
+                                <div
+                                    class="dropdown-menu dropdown-menu-fit dropdown-menu-right dropdown-menu-anim dropdown-menu-xl">
+
+                                    <!--begin: Head -->
+                                    <div class="kt-user-card kt-user-card--skin-dark kt-notification-item-padding-x"
+                                        style="background-image: url(/Assets/themes/metronic/media/misc/bg-1.jpg)">
+                                        <div class="kt-user-card__avatar">
+                                            <span
+                                                class="kt-badge kt-badge--lg kt-badge--rounded kt-badge--bold kt-font-success">AD</span>
+                                        </div>
+                                        <div class="kt-user-card__name">
+                                            Admin
+                                        </div>
+
+                                    </div>
+                                    <!--end: Head -->
+                                    <!--begin: Navigation -->
+                                    <div class="kt-notification">
+
+                                        <div class="kt-notification__custom kt-space-between">
+                                            <form action="/pt-br/2024/Account/LogOff" id="logoutForm" method="post">
+                                                <input name="__RequestVerificationToken" type="hidden"
+                                                    value="AtS5S2nxXDuJ7JjJUz0pa5pBCi9alyYr1h_QEpy9NUQaYWyGvJhvhSPTDC0ab_2KN3iBTlPShPnBYQjVO3YwDnydvVPJOY1hbAMguogiLBdhu1EFDyGSUcgKSp2iL8zN0c8A8g2">
+                                            </form>
+                                            <a href="{% url 'usuarios:logout' %}"
+                                                class="btn btn-label btn-label-brand btn-sm btn-bold">Sair</a>
+                                        </div>
+                                    </div>
+
+                                    <!--end: Navigation -->
+                                </div>
+                            </div>
+                            <!--end: User bar -->
+                        </div>
+                        <!-- end:: Header Topbar -->
+                    </div>
+                </div>
+                <!-- end:: Header -->
